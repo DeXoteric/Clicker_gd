@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MainScene.gd" type="Script" id=1]
+
+[node name="MainScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickerButton" type="Button" parent="."]
+margin_left = 100.0
+margin_top = 123.0
+margin_right = 312.0
+margin_bottom = 211.0
+text = "Click me!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TotalCurrencyDisplay" type="Label" parent="."]
+margin_left = 106.0
+margin_top = 21.0
+margin_right = 295.0
+margin_bottom = 72.0
+text = "Total currency: 0"
+align = 2
+valign = 1
+[connection signal="pressed" from="ClickerButton" to="." method="_on_ClickerButton_pressed"]
