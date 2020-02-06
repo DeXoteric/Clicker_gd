@@ -1,12 +1,20 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://MainScene.gd" type="Script" id=1]
-[ext_resource path="res://TotalCurrencyDisplay.gd" type="Script" id=2]
+[ext_resource path="res://src/MainScene.gd" type="Script" id=1]
+[ext_resource path="res://src/TotalCurrencyDisplay.gd" type="Script" id=2]
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.145098, 0.152941, 0.164706, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
