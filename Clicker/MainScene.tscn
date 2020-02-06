@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://MainScene.gd" type="Script" id=1]
+[ext_resource path="res://TotalCurrencyDisplay.gd" type="Script" id=2]
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
@@ -22,10 +23,19 @@ __meta__ = {
 
 [node name="TotalCurrencyDisplay" type="Label" parent="."]
 margin_left = 106.0
-margin_top = 21.0
+margin_top = 20.0
 margin_right = 295.0
-margin_bottom = 72.0
+margin_bottom = 71.0
 text = "Total currency: 0"
 align = 2
 valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="currency_changed" from="." to="TotalCurrencyDisplay" method="_on_currency_change"]
 [connection signal="pressed" from="ClickerButton" to="." method="_on_ClickerButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
