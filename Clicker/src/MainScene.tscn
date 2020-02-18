@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://src/TotalCurrencyDisplay.gd" type="Script" id=2]
+[ext_resource path="res://src/Tier.tscn" type="PackedScene" id=3]
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
@@ -44,6 +45,13 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Tier" parent="." instance=ExtResource( 3 )]
+margin_left = 671.651
+margin_top = 34.2001
+margin_right = 921.651
+margin_bottom = 94.2001
+base_cost = 10.0
 [connection signal="currency_changed" from="." to="TotalCurrencyDisplay" method="_on_currency_change"]
 [connection signal="pressed" from="ClickerButton" to="." method="_on_ClickerButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
