@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/MainScene.gd" type="Script" id=1]
-[ext_resource path="res://src/TotalCurrencyDisplay.gd" type="Script" id=2]
 [ext_resource path="res://src/Tier.tscn" type="PackedScene" id=3]
 
 [node name="MainScene" type="Control"]
@@ -31,27 +30,61 @@ __meta__ = {
 }
 
 [node name="TotalCurrencyDisplay" type="Label" parent="."]
-margin_left = 106.0
-margin_top = 20.0
-margin_right = 295.0
-margin_bottom = 71.0
+margin_left = 100.0
+margin_top = 30.0
+margin_right = 300.0
+margin_bottom = 60.0
 text = "Total currency: 0"
 align = 2
 valign = 1
-script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrencyPerSecDisplay" type="Label" parent="."]
+margin_left = 100.0
+margin_top = 60.0
+margin_right = 300.0
+margin_bottom = 90.0
+text = "+0 /s"
+align = 2
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
-[node name="Tier" parent="." instance=ExtResource( 3 )]
-margin_left = 671.651
-margin_top = 34.2001
-margin_right = 921.651
-margin_bottom = 94.2001
-base_cost = 10.0
-[connection signal="currency_changed" from="." to="TotalCurrencyDisplay" method="_on_currency_change"]
+[node name="Tier1" parent="." instance=ExtResource( 3 )]
+margin_left = 578.651
+margin_top = 67.2001
+margin_right = 938.651
+margin_bottom = 167.2
+tier_name = "Tier 1"
+base_cost = 15.0
+base_currency_increase = 0.1
+
+[node name="Tier2" parent="." instance=ExtResource( 3 )]
+margin_left = 576.001
+margin_top = 179.0
+margin_right = 936.001
+margin_bottom = 279.0
+tier_name = "Tier 2"
+base_cost = 100.0
+base_currency_increase = 1.0
+
+[node name="Tier3" parent="." instance=ExtResource( 3 )]
+margin_left = 573.896
+margin_top = 294.79
+margin_right = 933.896
+margin_bottom = 394.79
+tier_name = "Tier 3"
+base_cost = 1200.0
+base_currency_increase = 6.0
 [connection signal="pressed" from="ClickerButton" to="." method="_on_ClickerButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="current_currency_increase_changed" from="Tier1" to="." method="_on_Tier1_current_currency_increase_changed"]
+[connection signal="current_currency_increase_changed" from="Tier2" to="." method="_on_Tier2_current_currency_increase_changed"]
+[connection signal="current_currency_increase_changed" from="Tier3" to="." method="_on_Tier3_current_currency_increase_changed"]
